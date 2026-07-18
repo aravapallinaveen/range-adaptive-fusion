@@ -1,0 +1,27 @@
+# Virtual environment
+.venv/
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Data and Models
+data/
+TruckDrive/
+
+# Environment Variables
+.env
+
+# Images/Artifacts
+*.png
+*.gif
+*.mp4
+
+# Project Planning (User requested to ignore)
+PROJECT.md
