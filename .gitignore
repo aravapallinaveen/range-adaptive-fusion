@@ -25,3 +25,4 @@ TruckDrive/
 
 # Project Planning (User requested to ignore)
 PROJECT.md
+*.code-workspace
