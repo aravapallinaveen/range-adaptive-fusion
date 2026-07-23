@@ -113,15 +113,21 @@ def main():
     width = 0.35
     
     fig, ax = plt.subplots(figsize=(8, 6))
-    ax.bar(x - width/2, base_vals, width, label='Fixed-Weight Baseline', color='gray')
-    ax.bar(x + width/2, adapt_vals, width, label='Range-Adaptive Fusion', color='teal')
+    bars1 = ax.bar(x - width/2, base_vals, width, label='Fixed-Weight Baseline', color='gray')
+    bars2 = ax.bar(x + width/2, adapt_vals, width, label='Range-Adaptive Fusion', color='teal')
     
     ax.set_ylabel('Approx. Average Precision (Prec * Recall)')
     ax.set_title('Fusion AP vs. Range Bucket')
     ax.set_xticks(x)
     ax.set_xticklabels(buckets)
     ax.legend()
-    ax.set_ylim([0, 1.0])
+    
+    # Add labels on top of bars
+    for bars in (bars1, bars2):
+        for bar in bars:
+            val = bar.get_height()
+            ax.text(bar.get_x() + bar.get_width()/2., val,
+                    f'{val:.4f}', ha='center', va='bottom', fontsize=8)
     
     if not os.path.exists('eval'):
         os.makedirs('eval')
