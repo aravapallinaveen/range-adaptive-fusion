@@ -28,13 +28,6 @@ Below is a side-by-side comparison. The left panel shows the baseline fixed-weig
 - `eval/`: Evaluation metrics (`ap_by_range.py`), chart generation, and demo scripts (`demo_video.py`, `make_gif.py`).
 - `configs/`: Thresholds and weights for range buckets (`fusion_config.py`).
 
-## Interview Talking Points
-
-- **The Problem:** Modern autonomous trucking requires >200m perception to safely brake, but camera/LiDAR fusion usually collapses at ~150m because most pipelines use fixed fusion weights.
-- **The Approach:** Implemented a range-adaptive late-fusion pipeline that dynamically shifts sensor trust based on the target's distance. At >200m, it relies heavily on 4D Radar and FMCW LiDAR velocity returns rather than geometry.
-- **The Tools:** Leveraged classical clustering (DBSCAN via Open3D) as an interpretable proxy for bounding box proposals, and built a custom evaluation script to calculate AP across range buckets.
-- **The Result:** The adaptive pipeline preserves target tracking through the 150-400m blindspot where the static-weight baseline fails.
-
 ## Attribution & License
 
 > "TruckDrive, provided by Torc Robotics, Inc., available at torc-ai.github.io/TruckDrive, used under the Torc Robotics Non-Commercial License v1.0."

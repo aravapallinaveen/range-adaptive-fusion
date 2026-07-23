@@ -16,7 +16,7 @@ def get_bucket(d):
     if d < 200: return '100-200m'
     return '200-400m'
 
-def evaluate_frame(preds, gt_boxes, match_thresh=2.0):
+def evaluate_frame(preds, gt_boxes, match_thresh=4.0, conf_thresh=25.0):
     metrics = {
         '0-100m': {'tp': 0, 'fp': 0, 'gt': 0},
         '100-200m': {'tp': 0, 'fp': 0, 'gt': 0},
@@ -30,6 +30,9 @@ def evaluate_frame(preds, gt_boxes, match_thresh=2.0):
         
     matched_gt = set()
     for p in preds:
+        if p['confidence'] < conf_thresh:
+            continue
+            
         d = np.sqrt(p['x']**2 + p['y']**2)
         bucket = get_bucket(d)
         
