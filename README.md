@@ -8,9 +8,11 @@ This project implements a fusion detector that shifts trust toward the sensors t
 
 ## Findings & Evaluation
 
-As we move from the short-range band (0-100m) into the long-range bands (100-400m), the point density of traditional LiDAR decays rapidly. Our evaluation on the Torc Robotics TruckDrive dataset demonstrates that by adaptively shifting fusion weights toward FMCW LiDAR (Aeva) and 4D Radar (Conti542) at further distances, we are able to maintain a higher recall and precision for moving targets. 
+As we move from the short-range band (0-100m) into the long-range bands (100-400m), the point density of traditional LiDAR decays rapidly. Our evaluation on the Torc Robotics TruckDrive dataset demonstrates that by adaptively shifting fusion weights toward FMCW LiDAR (Aeva) in the 100-200m range, we are able to significantly outperform the static baseline.
 
-*(Note: The absolute AP values are low due to the use of classical DBSCAN geometric clustering instead of deep-learning detectors, but the relative robustness at long ranges is maintained).*
+However, in the 200-400m range, heavily weighting the 4D Radar (Conti542) increases recall but heavily impacts precision due to massive amounts of classical radar clutter, causing the overall Average Precision to dip slightly below the baseline. This highlights the need for deep-learning-based filtering to truly unlock radar at ultra-long ranges.
+
+*(Note: The absolute AP values are low due to the use of classical DBSCAN geometric clustering instead of deep-learning detectors, but the relative robustness at the 100-200m band is clearly demonstrated).*
 
 ![Average Precision vs Range Bucket](ap_vs_range.png)
 
