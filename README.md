@@ -22,6 +22,12 @@ Below is a side-by-side comparison. The left panel shows the baseline fixed-weig
 
 ![Fusion Demo Comparison](demo.gif)
 
+### 3D Point Cloud View
+
+A stunning 3D view of the scene, showing the Short-range Ouster LiDAR (blue), Long-range FMCW Aeva LiDAR (cyan), and Long-range 4D Radar (orange) with ground-truth bounding boxes.
+
+![3D Sensor Point Cloud View](demo_3d.png)
+
 ## Repo Structure
 
 - `data/`: Downloaded scenes from the dataset.
